@@ -1,12 +1,12 @@
 # Projeto API Conecta Lá
 
-## Projeto
+# Projeto
 
 Fazer uma API com um CRUD de usuários, visando segurança, tratamento de dados de entrada e boas práticas.
 Foi feito com Code Igniter 3 com PHP 8.1 (brew-php).
 
 
-## Passos
+# Passos
 
 
 * Fazer PULL do projeto
@@ -36,6 +36,3 @@ Foi feito com Code Igniter 3 com PHP 8.1 (brew-php).
             * username / password
     * POST /auth/logout
         * exclui o token e encerra a sessão
-
-Segue yaml do Insomnia para testes.
-
