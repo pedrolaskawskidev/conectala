@@ -1,0 +1,467 @@
+type: collection.insomnia.rest/5.0
+name: Geral
+meta:
+  id: wrk_9a46b9995113446b8abf2d36929c71c9
+  created: 1754587075036
+  modified: 1754587084000
+  description: ""
+collection:
+  - name: GLPI Homolog
+    meta:
+      id: fld_79ac8d7e2f0a4592969c44c4a38df85b
+      created: 1754311277670
+      modified: 1755622136498
+      sortKey: -1754311277670
+      description: ""
+    environment:
+      session-token: ""
+      app-token: 37oy1E969eZdB8dPYIT1mMoYzlCrKCz4kSDKEb6c
+  - name: API
+    meta:
+      id: fld_0ce2836403cd4f2fa4fc1f91b3862510
+      created: 1755622151177
+      modified: 1755622151177
+      sortKey: -1755622151177
+      description: ""
+  - name: Tests API
+    meta:
+      id: fld_30813d1e44c248b8b3854fc07e6a84be
+      created: 1756923886371
+      modified: 1756936022646
+      sortKey: -1756923886371
+      description: ""
+    children:
+      - url: http://localhost:3000/auth/login
+        name: Login
+        meta:
+          id: req_62fb412fb0224891a4d93d3f53f4c817
+          created: 1756850955341
+          modified: 1756937500076
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893164
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: username
+              value: teste
+              id: pair_4d49864610d14c41b6cab59fadffe91e
+            - id: pair_339b448faaa74c84a5f0950699790d3b
+              name: password
+              value: teste01
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/11.5.0
+        scripts:
+          afterResponse: |+
+            const responseBody = insomnia.response.json();
+
+            insomnia.environment.set('tokenAPI', responseBody.token);
+
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api
+        name: All
+        meta:
+          id: req_87f5e5204abe43d3bb50cca99b8afd08
+          created: 1756920645449
+          modified: 1756937242633
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893264
+        method: GET
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: username
+              value: pedrolaskawski
+              id: pair_4d49864610d14c41b6cab59fadffe91e
+              disabled: true
+            - id: pair_339b448faaa74c84a5f0950699790d3b
+              name: password
+              value: teste
+              description: ""
+              disabled: true
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+            id: pair_7dd762b4be9242ad9d4288f53f372f91
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/create
+        name: User
+        meta:
+          id: req_1022f7e9bc114b229c1a8e30feed5c4c
+          created: 1756923901196
+          modified: 1756937319358
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893214
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username": "samuel",
+            	"email": "btata@email.com",
+            	"password": "12345"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/update/2
+        name: User
+        meta:
+          id: req_c9af96f1edb94f9a9ce823b6ea2cb23f
+          created: 1756924374291
+          modified: 1756937398865
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893189
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username": "smu"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/delete/1
+        name: User
+        meta:
+          id: req_2a498c5cd3b14046a5f1dcd37145f4b6
+          created: 1756929186800
+          modified: 1756937469176
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893176.5
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username": "smu"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_23b654b860414c24903d13cb58fe102d
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/api/show/1
+        name: User
+        meta:
+          id: req_5ccb3223c38f441b8a514d47b8737687
+          created: 1756929750261
+          modified: 1756937292683
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893239
+        method: GET
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: username
+              value: pedrolaskawski
+              id: pair_4d49864610d14c41b6cab59fadffe91e
+              disabled: true
+            - id: pair_339b448faaa74c84a5f0950699790d3b
+              name: password
+              value: teste
+              description: ""
+              disabled: true
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+            id: pair_7dd762b4be9242ad9d4288f53f372f91
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/db/migrate
+        name: Migrate
+        meta:
+          id: req_d15281c59b634f8c81233628e641f750
+          created: 1756930600393
+          modified: 1756937151456
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893226.5
+        method: GET
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: username
+              value: pedrolaskawski
+              id: pair_4d49864610d14c41b6cab59fadffe91e
+              disabled: true
+            - id: pair_339b448faaa74c84a5f0950699790d3b
+              name: password
+              value: teste
+              description: ""
+              disabled: true
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+            id: pair_7dd762b4be9242ad9d4288f53f372f91
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: true
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/db/seed
+        name: Seed
+        meta:
+          id: req_37cad2f37220497db572d4fdab7a77a1
+          created: 1756933473298
+          modified: 1756937154578
+          isPrivate: false
+          description: ""
+          sortKey: -1756923893220.25
+        method: GET
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: username
+              value: pedrolaskawski
+              id: pair_4d49864610d14c41b6cab59fadffe91e
+              disabled: true
+            - id: pair_339b448faaa74c84a5f0950699790d3b
+              name: password
+              value: teste
+              description: ""
+              disabled: true
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+            id: pair_7dd762b4be9242ad9d4288f53f372f91
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_0df3b565bbf34211b9cee74f8fb1eba1
+          - id: pair_4c104330c2274c59b234f06d1918d43c
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: true
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/auth/logout
+        name: Logout
+        meta:
+          id: req_db40d27bbdb8429d948990874c40bade
+          created: 1756935520021
+          modified: 1756936020948
+          isPrivate: false
+          description: ""
+          sortKey: -1756657117551
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: username
+              value: teste
+              id: pair_4d49864610d14c41b6cab59fadffe91e
+            - id: pair_339b448faaa74c84a5f0950699790d3b
+              name: password
+              value: teste01
+              description: ""
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+            id: pair_96a60df269774bf1b06d1961e49e5559
+          - name: User-Agent
+            value: insomnia/11.5.0
+            id: pair_85da5769f4e54b32af278710fa149c2a
+          - id: pair_efb6265ed12d4bd58ac758dbf2646ed4
+            name: token
+            value: "{{ _.tokenAPI }}"
+            description: ""
+            disabled: false
+        scripts:
+          afterResponse: |+
+            const responseBody = insomnia.response.json();
+
+            insomnia.environment.set('tokenAPI', responseBody.token);
+
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_00eecdffb9b0438fac7d0d34cb43a46c
+    created: 1750170269201
+    modified: 1756936022642
+  cookies:
+    - id: c788f59f-f724-49a5-98f8-3abda7494bcb
+      key: aXBwXzIwMS4xNC43LjYy
+      value: none
+      domain: selectoperadora.com.br
+      path: /wp-json/plugin/v1/busca-rede-credenciada
+      secure: false
+      httpOnly: false
+      creation: 2025-08-12T17:36:05.592Z
+      hostOnly: true
+      pathIsDefault: true
+      lastAccessed: 2025-08-12T17:36:05.592Z
+    - id: 3a5deb1e-c69a-48bd-bac6-aaf8c0bf1f41
+      key: aXBwXzE3Ny45Mi41NS4xNjM
+      value: none
+      domain: selectoperadora.com.br
+      path: /wp-json/plugin/v1/receber-json
+      secure: false
+      httpOnly: false
+      creation: 2025-08-08T13:54:44.146Z
+      hostOnly: true
+      pathIsDefault: true
+      lastAccessed: 2025-08-08T13:54:44.146Z
+    - id: e66e69dd-d3d0-4672-9371-a97ea0c1435e
+      key: aXBwXzE5MS4yMTkuNTkuMTM3
+      value: none
+      domain: selectoperadora.com.br
+      path: /wp-json/plugin/v1/receber-json
+      secure: false
+      httpOnly: false
+      creation: 2025-08-21T15:49:11.149Z
+      hostOnly: true
+      pathIsDefault: true
+      lastAccessed: 2025-08-21T15:49:11.149Z
+    - id: 6e8f6c93-1942-4ef6-9ef9-621a7ab0dd3a
+      key: aXBwXzIwMC4xNDAuMjQ3LjE3NQ
+      value: none
+      domain: selectoperadora.com.br
+      path: /wp-json/plugin/v1/receber-json
+      secure: false
+      httpOnly: false
+      creation: 2025-09-03T15:50:18.855Z
+      hostOnly: true
+      pathIsDefault: true
+      lastAccessed: 2025-09-03T15:50:18.855Z
+environments:
+  name: Homologação
+  meta:
+    id: env_c91e6719ffe44979a4f30c9a7a0fa118
+    created: 1746447472044
+    modified: 1756936022645
+    isPrivate: false
+  data:
+    url: https://homologacao.prestadores.midiaideal.net
+    token: 631c01337777ea82b7edbef36bc2d5df4b3938c426672a875a5f2b4caffee2ce
+  subEnvironments:
+    - name: Produção
+      meta:
+        id: env_b238d0da716a4b1695f2e384b86058cd
+        created: 1754414540641
+        modified: 1754414703939
+        isPrivate: false
+        sortKey: 1754414540641
+      data:
+        url: https://prestadores.midiaideal.net
